@@ -7,9 +7,9 @@ import java.util.regex.Matcher
 object utilities {
   
   //Directory where the data files for the examples exist.
-	val ip_dir = "C:/eclipse_4.5_workspace/prjsparkhadoop/src/main/resources/ip_files/"
-	val op_dir = "C:/eclipse_4.5_workspace/prjsparkhadoop/src/main/resources/op_files/"  
-	val resouces_dir = "C:/eclipse_4.5_workspace/prjsparkhadoop/src/main/resources/"
+	val ip_dir = "C:/Users/Admih/GIT/prjsparkhadoop/src/main/resources/ip_files/"
+	val op_dir = "C:/Users/Admih/GIT/prjsparkhadoop/src/main/resources/op_files/"  
+	val resouces_dir = "C:/Users/Admih/GIT/prjsparkhadoop/src/main/resources/"
 	
   /** Retrieves a regex Pattern for parsing Apache access logs. */
   def apacheLogPattern():Pattern = {
