@@ -1,0 +1,3 @@
+{"id": 1,"name": "A green door","price": 12.50,   "details": {"tags": ["home", "green"], "otherdetails": "good", "hash": ["xxx", "yyy"] }}
+{"id": 2,"name": "A green door2","price": 212.50, "details": {"otherdetails": "better", "tags": ["home2", "green2"], "hash": ["aaa", "bbb"] }}
+{"id": 3,"name": "A green door3","price": 312.50, "details": {"tags": ["home3", "green3"], "otherdetails": "beautiful" }}

@@ -1,0 +1,16 @@
+{
+    "id": 1,
+    "name": "A green door",
+    "price": 12.50,
+    "tags": ["home", "green"],
+    "parts" : [
+        {
+            "lock" : "One lock",
+            "key" : "single key"
+        },
+        {
+            "lock" : "2 lock",
+            "key" : "2 key"
+        }
+    ]
+}
