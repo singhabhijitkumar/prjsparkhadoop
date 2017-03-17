@@ -64,7 +64,7 @@ object objsparkstreaming {
     
       // Convert RDDs of the words DStream to DataFrame and run SQL query
       tweets.foreachRDD { m =>
-    
+    println("**************************STARTING********************")
         // Now extract the text of each status update into DStreams using map()
         val statuses = m.map(status => status.getText())
 
@@ -76,7 +76,7 @@ object objsparkstreaming {
         //val wordsDataFrame_json = m.map(w => Record(w.toString())).toDF()
         //val wordsDataFrame = wordsDataFrame_json.withColumn("parsedJson",  getJsonContentUDF(wordsDataFrame_json("word")))
         val wordsDataFrame = m.map(w => Record(w.toString())).toDF()
-        
+
         // Creates a temporary view using the DataFrame
         wordsDataFrame.createOrReplaceTempView("words")
         wordsDataFrame.printSchema()
