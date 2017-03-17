@@ -17,7 +17,7 @@ public class socketserver {
 	    PrintStream os;
 	    Socket clientSocket = null;
 	    
-    	Path path = FileSystems.getDefault().getPath("C:/Users/Admih/Downloads/scala-spark-bda/data-files", "streamingtweets.txt");
+    	Path path = FileSystems.getDefault().getPath("C:/Users/Admih/GIT/prjsparkhadoop/src/main/resources/", "streamingtweets.txt");
 	    List<String> lines = null;
 		try {
 			lines = Files.readAllLines(path,StandardCharsets.UTF_8);
@@ -25,7 +25,13 @@ public class socketserver {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-	    
+		
+		try (Socket s = new Socket("localhost", 9000)) {
+			s.close();
+	    } catch (IOException ex) {
+	        /* ignore */
+	    }
+		
 	    try {
 	    	socServer = new ServerSocket(9000);
 	    	System.out.println("Socket opened");
