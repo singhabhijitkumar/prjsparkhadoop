@@ -243,5 +243,6 @@
 	<classpathentry kind="lib" path="C:/external_jars/mysql-connector-java-5.1.21.jar"/>
 	<classpathentry kind="lib" path="C:/external_jars/dstream-twitter_2.11-0.1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="C:/external_jars/spark-sql-kafka-0-10_2.11-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/spark-streaming-kafka-0-8_2.11-2.1.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
