@@ -3,6 +3,8 @@ package pkgutilities
 import org.apache.log4j.Level
 import java.util.regex.Pattern
 import java.util.regex.Matcher
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.SparkConf
 
 object utilities {
   
@@ -27,4 +29,25 @@ object utilities {
     Pattern.compile(regex)    
   }
 
+}
+
+
+//** Case class for converting RDD to DataFrame */
+case class Record(word: String)
+
+
+/** Lazily instantiated singleton instance of SparkSession */
+object SparkSessionSingleton {
+
+  @transient  private var instance: SparkSession = _
+
+  def getInstance(sparkConf: SparkConf): SparkSession = {
+    if (instance == null) {
+      instance = SparkSession
+        .builder
+        .config(sparkConf)
+        .getOrCreate()
+    }
+    instance
+  }
 }

@@ -47,7 +47,7 @@ object DirectKafkaWordCount {
     lines.print()
 
     // Start the computation
-    ssc.checkpoint("C:/checkpoint/")
+    ssc.checkpoint("C:/checkpoint/objkafkastreaming")
     ssc.start()
     ssc.awaitTermination()
   }

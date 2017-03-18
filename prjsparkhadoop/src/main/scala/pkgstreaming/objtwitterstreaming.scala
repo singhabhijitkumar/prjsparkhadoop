@@ -1,5 +1,6 @@
 package pkgstreaming
 
+import org.apache.spark.sql.functions.udf
 import org.apache.spark._
 import org.apache.spark.SparkContext._
 import org.apache.spark.sql._
@@ -19,6 +20,7 @@ import scala.io.Source
 import scala.io.Codec
 import java.nio.charset.CodingErrorAction
 
+import pkgutilities.{SparkSessionSingleton, utilities, Record}
 import pkgutilities.utilities._
 import org.json4s.{DefaultFormats, MappingException}
 import org.json4s.jackson.JsonMethods._
@@ -58,7 +60,7 @@ object objtwitterstreaming {
       }
       
       // Create a DStream from Twitter using our streaming context
-      val tweets = TwitterUtils.createStream(ssc, None)
+      val tweets = TwitterUtils.createStream(ssc, None, Array("#YogiAdityanath", "#SriSri"))
     
       // Convert RDDs of the words DStream to DataFrame and run SQL query
       tweets.foreachRDD { m =>
@@ -85,7 +87,6 @@ object objtwitterstreaming {
         spark.sql("""
                 select text, count(1) as cnt
                 from (select regexp_extract(word, 'text=(.*)source=', 1) as text from words)
-                where text like '%#%'
                 group by 1
                 order by cnt desc""")
         println(s"=========  =========")
@@ -93,30 +94,11 @@ object objtwitterstreaming {
         wordCountsDataFrame.printSchema()  
     }        
       
-    ssc.checkpoint("C:/checkpoint/")
+    ssc.checkpoint("C:/checkpoint/objtwitterstreaming")
     ssc.start()
     ssc.awaitTermination()
 
     }
+  
     
-}
-
-//** Case class for converting RDD to DataFrame */
-case class Record(word: String)
-
-
-/** Lazily instantiated singleton instance of SparkSession */
-object SparkSessionSingleton {
-
-  @transient  private var instance: SparkSession = _
-
-  def getInstance(sparkConf: SparkConf): SparkSession = {
-    if (instance == null) {
-      instance = SparkSession
-        .builder
-        .config(sparkConf)
-        .getOrCreate()
-    }
-    instance
-  }
 }
