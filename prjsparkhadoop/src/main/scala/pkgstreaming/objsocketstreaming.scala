@@ -62,6 +62,12 @@ object objsocketstreaming {
           lines.write.mode(SaveMode.Append).option("header", "true").csv(op_dir+"/socketstreamop.csv")
 
       }
+      
+      
+    // Start the computation
+    ssc.checkpoint("C:/checkpoint/")
+    ssc.start()
+    ssc.awaitTermination()
    }  	
 }
 

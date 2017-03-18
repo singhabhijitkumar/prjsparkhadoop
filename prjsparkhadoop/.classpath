@@ -31,6 +31,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/external_jars/twitter4j-stream-4.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/twitter4j-core-4.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/spark-streaming-kafka-0-8_2.11-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/spark-sql-kafka-0-10_2.11-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/mysql-connector-java-5.1.21.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/kafka-clients-0.10.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/dstream-twitter_2.11-0.1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="C:/spark/jars/activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/spark/jars/antlr-2.7.7.jar"/>
 	<classpathentry kind="lib" path="C:/spark/jars/antlr4-runtime-4.5.3.jar"/>
@@ -238,11 +245,7 @@
 	<classpathentry kind="lib" path="C:/spark/jars/xmlenc-0.52.jar"/>
 	<classpathentry kind="lib" path="C:/spark/jars/xz-1.0.jar"/>
 	<classpathentry kind="lib" path="C:/spark/jars/zookeeper-3.4.6.jar"/>
-	<classpathentry kind="lib" path="C:/external_jars/twitter4j-core-4.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/external_jars/twitter4j-stream-4.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/external_jars/mysql-connector-java-5.1.21.jar"/>
-	<classpathentry kind="lib" path="C:/external_jars/dstream-twitter_2.11-0.1.0-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/external_jars/spark-sql-kafka-0-10_2.11-2.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/external_jars/spark-streaming-kafka-0-8_2.11-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/kafka_2.11-0.10.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/spark-streaming_2.11-2.1.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

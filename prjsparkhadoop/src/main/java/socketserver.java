@@ -26,16 +26,10 @@ public class socketserver {
 			e1.printStackTrace();
 		}
 		
-		try (Socket s = new Socket("localhost", 9000)) {
-			s.close();
-	    } catch (IOException ex) {
-	        /* ignore */
-	    }
 		
 	    try {
 	    	socServer = new ServerSocket(9000);
 	    	System.out.println("Socket opened");
-	    	
 	    	System.out.println("Total records read :" + lines.size());
 	     }
 	     catch (IOException e) {
