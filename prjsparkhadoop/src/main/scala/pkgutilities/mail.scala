@@ -1,4 +1,8 @@
-package object mail {
+package pkgutilities
+
+import org.apache.commons.mail._
+
+object mail {
 
   implicit def stringToSeq(single: String): Seq[String] = Seq(single)
   implicit def liftToOption[T](t: T): Option[T] = Some(t)
@@ -8,49 +12,42 @@ package object mail {
   case object Rich extends MailType
   case object MultiPart extends MailType
 
-  case class Mail(
-    from: (String, String), // (email -> name)
-    to: Seq[String],
-    cc: Seq[String] = Seq.empty,
-    bcc: Seq[String] = Seq.empty,
-    subject: String,
-    message: String,
-    richMessage: Option[String] = None,
-    attachment: Option[(java.io.File)] = None
-  )
-
-  object send {
-    def a(mail: Mail) {
-      import org.apache.commons.mail._
+    def send(
+          from: (String, String), // (email -> name)
+          to: Seq[String],
+          cc: Seq[String] = Seq.empty,
+          bcc: Seq[String] = Seq.empty,
+          subject: String,
+          message: String,
+          richMessage: Option[String] = None,
+          attachment: Option[(java.io.File)] = None) 
+  {
 
       val format =
-        if (mail.attachment.isDefined) MultiPart
-        else if (mail.richMessage.isDefined) Rich
+        if (attachment.isDefined) MultiPart
+        else if (richMessage.isDefined) Rich
         else Plain
 
       val commonsMail: Email = format match {
-        case Plain => new SimpleEmail().setMsg(mail.message)
-        case Rich => new HtmlEmail().setHtmlMsg(mail.richMessage.get).setTextMsg(mail.message)
+        case Plain => new SimpleEmail().setMsg(message)
+        case Rich => new HtmlEmail().setHtmlMsg(richMessage.get).setTextMsg(message)
         case MultiPart => {
           val attachment = new EmailAttachment()
-          attachment.setPath(mail.attachment.get.getAbsolutePath)
+          //attachment.setPath(attachment.get)
           attachment.setDisposition(EmailAttachment.ATTACHMENT)
-          attachment.setName(mail.attachment.get.getName)
-          new MultiPartEmail().attach(attachment).setMsg(mail.message)
+          attachment.setName(attachment.get.getName)
+          new MultiPartEmail().attach(attachment).setMsg(message)
         }
       }
 
-      // TODO Set authentication from your configuration, sys properties or w/e
-
       // Can't add these via fluent API because it produces exceptions
-      mail.to foreach (commonsMail.addTo(_))
-      mail.cc foreach (commonsMail.addCc(_))
-      mail.bcc foreach (commonsMail.addBcc(_))
+      to foreach (commonsMail.addTo(_))
+      cc foreach (commonsMail.addCc(_))
+      bcc foreach (commonsMail.addBcc(_))
 
       commonsMail.
-        setFrom(mail.from._1, mail.from._2).
-        setSubject(mail.subject).
+        setFrom(from._1, from._2).
+        setSubject(subject).
         send()
     }
   }
-}

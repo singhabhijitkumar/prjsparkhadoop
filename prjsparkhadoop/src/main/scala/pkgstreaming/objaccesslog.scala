@@ -16,7 +16,7 @@ object objaccesslog {
  
   def main(args: Array[String]) {
     Logger.getLogger("org").setLevel(Level.ERROR)
-    
+   
     // Create the context with a 1 second batch size
     val ssc = new StreamingContext("local[*]", "LogParser", Seconds(1))
     

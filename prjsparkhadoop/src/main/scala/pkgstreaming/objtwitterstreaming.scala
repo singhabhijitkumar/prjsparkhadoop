@@ -22,6 +22,7 @@ import java.nio.charset.CodingErrorAction
 
 import pkgutilities.{SparkSessionSingleton, utilities, Record}
 import pkgutilities.utilities._
+import pkgutilities.mail._
 import org.json4s.{DefaultFormats, MappingException}
 import org.json4s.jackson.JsonMethods._
 import org.apache.spark.sql.functions._
@@ -44,7 +45,21 @@ object objtwitterstreaming {
       implicit val codec = Codec("UTF-8")
       codec.onMalformedInput(CodingErrorAction.REPLACE)
       codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
-
+      
+      try {
+        pkgutilities.mail.send (
+          from = "john.smith@mycompany.com" -> "John Smith",
+          to = "dev@mycompany.com" :: "marketing@mycompany.com" :: Nil,
+          subject = "Our 5-year plan",
+          message = "Here is the presentation with the stuff we're going to for the next five years."
+          //,attachment = new java.io.File("/home/boss/important-presentation.ppt")
+        )
+        }
+       catch {
+          case ex: Exception => println("unable to send mail")
+          //println(ex.printStackTrace)
+        }
+      
       val sparkConf = new SparkConf().setMaster("local[*]").setAppName("Streaming")
       val sc = new SparkContext(sparkConf)
       val sqlcontext = new SQLContext(sc);      
