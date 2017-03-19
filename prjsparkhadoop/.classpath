@@ -247,5 +247,8 @@
 	<classpathentry kind="lib" path="C:/spark/jars/zookeeper-3.4.6.jar"/>
 	<classpathentry kind="lib" path="C:/external_jars/kafka_2.11-0.10.0.0.jar"/>
 	<classpathentry kind="lib" path="C:/external_jars/spark-streaming_2.11-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/commons-email-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/javax.mail-1.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/external_jars/activation-1.1.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
