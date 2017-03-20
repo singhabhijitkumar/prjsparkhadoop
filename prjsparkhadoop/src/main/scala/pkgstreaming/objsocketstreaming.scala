@@ -10,7 +10,6 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.{Seconds, StreamingContext, Time}
 import org.apache.spark.storage.StorageLevel
-import org.apache.spark.streaming.twitter._
 import org.apache.spark.streaming.StreamingContext._
 import org.apache.log4j.{Level, Logger}
 import java.util.regex.Pattern
@@ -22,9 +21,6 @@ import java.nio.charset.CodingErrorAction
 import pkgutilities.{SparkSessionSingleton, utilities, Record}
 import pkgutilities.utilities._
 
-import org.json4s.{DefaultFormats, MappingException}
-import org.json4s.jackson.JsonMethods._
-import org.apache.spark.sql.functions._
 import scala.util.Try
 
 object objsocketstreaming {

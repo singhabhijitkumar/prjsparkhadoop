@@ -28,7 +28,7 @@ object objaccesslog {
     lines.print()
     
     // Extract the request field from each log line
-    val requests = lines.map(x => {val matcher:Matcher = pattern.matcher(x); if (matcher.matches()) matcher.group(1) })
+    val requests = lines.map(x  => {val matcher:Matcher = pattern.matcher(x); if (matcher.matches()) matcher.group(1) })
     requests.print()
     
     // Extract the URL from the request

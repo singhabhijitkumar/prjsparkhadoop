@@ -28,16 +28,17 @@ import org.json4s.jackson.JsonMethods._
 import org.apache.spark.sql.functions._
 
 object objtwitterstreaming {
-
+/*
   def getJsonContent(jsonstring: String): (String, String) = {
     implicit val formats = DefaultFormats
-    val parsedJson = parse(jsonstring)  
+    val parsedJson = org.json4s.jackson.JsonMethods.parse(jsonstring)  
     val value1 = (parsedJson \ "key1").extract[String]
     val level2value1 = (parsedJson \ "key2" \ "level2key1").extract[String]
     (value1, level2value1)
 }
-  val getJsonContentUDF = udf((jsonstring: String) => getJsonContent(jsonstring))
   
+  val getJsonContentUDF = udf((jsonstring: String) => getJsonContent(jsonstring))
+  */
   def main(args: Array[String]) {
       // Set the log level to only print errors
       Logger.getLogger("org").setLevel(Level.ERROR)
