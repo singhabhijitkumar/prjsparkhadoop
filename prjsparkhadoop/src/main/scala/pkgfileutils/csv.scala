@@ -11,9 +11,16 @@ import pkgutilities.utilities._
 object csv {
 
   def main(args: Array[String]) {
+   //val log4jConfPath = "C:/spark/conf/log4j.properties";
+   //PropertyConfigurator.configure(log4jConfPath);
+   
     // Set the log level to only print errors
-    Logger.getLogger("org").setLevel(Level.ERROR)
+    //Logger.getLogger("org").setLevel(Level.WARN)
+    val log = LogManager.getRootLogger
+    log.setLevel(Level.INFO)
 
+    log.info("Starting CSV")
+    
     implicit val codec = Codec("UTF-8")
     codec.onMalformedInput(CodingErrorAction.REPLACE)
     codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
