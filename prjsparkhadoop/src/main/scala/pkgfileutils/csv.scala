@@ -51,12 +51,12 @@ object csv {
 
   def readCSV(spark:SparkSession) {
     //read CSV      
-    val df_csv = spark.read.option("header", "false").option("inferSchema", "true").csv(ip_dir+"/fakefriends.csv")
+    val df_csv = spark.read.option("header", "false").option("mode","PERMISSIVE").option("inferSchema", "true").csv(ip_dir+"/fakefriends.csv")
     df_csv.printSchema()
     df_csv.createOrReplaceTempView("fakefriends")
     df_csv.show()
     
-    val df_dsv = spark.read.option("header", "true").option("inferSchema", "true").option("delimiter", "|").csv(ip_dir+"/pipedelimiteddata.dsv")
+    val df_dsv = spark.read.option("header", "true").option("mode","FAILFAST").option("inferSchema", "true").option("delimiter", "|").csv(ip_dir+"/pipedelimiteddata.dsv")
     df_dsv.printSchema()
     df_dsv.createOrReplaceTempView("tb_pipedelimited")
     df_dsv.show()    

@@ -50,7 +50,7 @@ object objtwitterstreaming {
       try {
         pkgutilities.mail.send (
           from = "john.smith@mycompany.com" -> "John Smith",
-          to = "dev@mycompany.com" :: "marketing@mycompany.com" :: Nil,
+          to = "singhabhijitkumar2@gmail.com" :: "marketing@mycompany.com" :: Nil,
           subject = "Our 5-year plan",
           message = "Here is the presentation with the stuff we're going to for the next five years."
           //,attachment = new java.io.File("/home/boss/important-presentation.ppt")
@@ -58,7 +58,7 @@ object objtwitterstreaming {
         }
        catch {
           case ex: Exception => println("unable to send mail")
-          //println(ex.printStackTrace)
+          println(ex.printStackTrace)
         }
       
       val sparkConf = new SparkConf().setMaster("local[*]").setAppName("Streaming")
